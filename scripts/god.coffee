@@ -11,8 +11,8 @@
 module.exports = (robot) ->
   count = 0
   fail_word = (cnt) ->
+    count = 0
     if cnt > 0 and cnt < 4
-      count = 0
       ":chi-chan:<ﾅｲﾜｰ"
     else if cnt is 4
       ":chi-chan:<ﾏｼﾞﾌｧｯｸﾀﾞﾜｰ"
@@ -24,21 +24,25 @@ module.exports = (robot) ->
       when "神"
         if count is 0
           count++
+          null
         else
           fail_word(count)
       when "尾"
         if count is 1
           count++
+          null
         else
           fail_word(count)
       when "ち"
         if count is 2
           count++
+          null
         else
           fail_word(count)
       when "な"
         if count is 3
           count++
+          null
         else
           fail_word(count)
       when "み"
@@ -50,7 +54,7 @@ module.exports = (robot) ->
       else
         fail_word(count)
 
-    msg.send "#{res}" if res?
+    msg.send "#{res}" if res
 
   #
   # robot.respond /open the (.*) doors/i, (msg) ->
