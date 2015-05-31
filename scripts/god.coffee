@@ -8,14 +8,42 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
+GOD_SPEECH = [
+  "ファッキンクレイジーだな",
+  "アンニュイなかんじ",
+  "私はこうやって地位を確立しました",
+  "お前そういうとこあるよな",
+  "ブス！",
+  "ブスの頂点は私です",
+  "怒られたい",
+  "私これキラーイ",
+  "わかるー",
+  "でも陰で言うより良くない？",
+  "はらたつー",
+  "それなーー",
+  "ごきげんよう",
+  "ごきげんうるわしゅう",
+  "ハッピーアイスクリームゥー！ :ok_woman",
+  "よいのでは〜",
+  "アイスたべたい :icecream: ",
+  "☝️",
+  "コレクソまずいな",
+  "あいつ私に何てモノ食わせてんだよ",
+  "イイナァ",
+  "惚れちゃう〜",
+  "好き！",
+  "人間の死亡率は100%だから死を恐れることはないヨ！",
+  "神木君さいこう"
+]
+
 module.exports = (robot) ->
   count = 0
   fail_word = (cnt) ->
     count = 0
     if cnt > 0 and cnt < 4
-      ":chi-chan:<ﾅｲﾜｰ"
+      ":chi-chan:<ないわー"
     else if cnt is 4
-      ":chi-chan:<ﾏｼﾞﾌｧｯｸﾀﾞﾜｰ"
+      ":chi-chan:<マジファックだわー"
 
   robot.hear /(.*)/i, (msg) ->
     word = msg.match[1]
@@ -48,7 +76,7 @@ module.exports = (robot) ->
       when "み"
         if count is 4
           count = 0
-          ":chi-chan:<ｻｲｺｰ"
+          ":chi-chan:<さいこー"
         else
           fail_word(count)
       else
@@ -56,13 +84,8 @@ module.exports = (robot) ->
 
     msg.send "#{res}" if res
 
-  #
-  # robot.respond /open the (.*) doors/i, (msg) ->
-  #   doorType = msg.match[1]
-  #   if doorType is "pod bay"
-  #     msg.reply "I'm afraid I can't let you do that."
-  #   else
-  #     msg.reply "Opening #{doorType} doors"
+  robot.hear /:chi-chan|@chi-chan/i, (msg) ->
+    msg.send msg.random GOD_SPEECH
   #
   # robot.hear /I like pie/i, (msg) ->
   #   msg.emote "makes a freshly baked pie"
