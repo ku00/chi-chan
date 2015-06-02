@@ -8,7 +8,7 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-GodQueue = require './god_queue'
+GodState = require './god_state'
 
 GOD_SPEECH = [
   "ファッキンクレイジーだな",
@@ -39,52 +39,14 @@ GOD_SPEECH = [
 ]
 
 module.exports = (robot) ->
-  count = 0
-  fail_word = (cnt) ->
-    count = 0
-    if cnt > 0 and cnt < 4
-      ":chi-chan:<ないわー"
-    else if cnt is 4
-      ":chi-chan:<マジファックだわー"
+  state = new GodState()
 
   robot.hear /(.*)/i, (msg) ->
-    word = msg.match[1]
+    state.update(msg.match[1])
 
-    res = switch word
-      when "神"
-        if count is 0
-          count++
-          null
-        else
-          fail_word(count)
-      when "尾"
-        if count is 1
-          count++
-          null
-        else
-          fail_word(count)
-      when "ち"
-        if count is 2
-          count++
-          null
-        else
-          fail_word(count)
-      when "な"
-        if count is 3
-          count++
-          null
-        else
-          fail_word(count)
-      when "み"
-        if count is 4
-          count = 0
-          ":chi-chan:<さいこー"
-        else
-          fail_word(count)
-      else
-        fail_word(count)
+    theWord = state.theWord
 
-    msg.send "#{res}" if res
+    msg.send theWord if theWord
 
   robot.hear /:chi-chan|@chi-chan/i, (msg) ->
     msg.send msg.random GOD_SPEECH
