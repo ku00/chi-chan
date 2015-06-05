@@ -51,7 +51,7 @@ module.exports = (robot) ->
 
     msg.send theWord if theWord
 
-  robot.hear /:chi-chan|@chi-chan/i, (msg) ->
+  robot.hear /:chi-chan|@god-tail-1000-wave/i, (msg) ->
     msg.send msg.random GOD_SPEECH
   #
   # robot.hear /I like pie/i, (msg) ->
