@@ -4,7 +4,7 @@ module.exports = (robot) ->
       .header('Accept', 'application/json')
       .get() (err, res, body) ->
         if res.statusCode isnt 200
-          res.send ":chi-chan: ないわー"
+          msg.send ":chi-chan: ないわー"
           return
 
         photo = JSON.parse(body)
