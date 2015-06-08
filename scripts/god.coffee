@@ -8,6 +8,7 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
+GodPhoto = require './god_photo'
 GodState = require './god_state'
 
 GOD_SPEECH = [
@@ -42,11 +43,15 @@ GOD_SPEECH = [
 ]
 
 module.exports = (robot) ->
-  state = new GodState()
+  photo = new GodPhoto()
+  robot.respond /(わら|笑)って/, (msg) ->
+    photo.random (res) ->
+      msg.send res
+    msg.finish()
 
+  state = new GodState()
   robot.hear /(.*)/i, (msg) ->
     state.update(msg.match[1])
-
     theWord = state.theWord
 
     msg.send theWord if theWord
