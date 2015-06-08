@@ -8,39 +8,9 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-GodPhoto = require './god_photo'
-GodState = require './god_state'
-
-GOD_SPEECH = [
-  "ファッキンクレイジーだな",
-  "アンニュイなかんじ",
-  "私はこうやって地位を確立しました",
-  "お前そういうとこあるよな",
-  "ブス！",
-  "ブスの頂点は私です",
-  "怒られたい",
-  "私これキラーイ",
-  "わかるー",
-  "でも陰で言うより良くない？",
-  "はらたつー",
-  "それなーー",
-  "ごきげんよう",
-  "ごきげんうるわしゅう",
-  "ハッピーアイスクリームゥー！ :ok_woman:",
-  "よいのでは〜",
-  "アイスたべたい :icecream:",
-  "☝️",
-  "コレクソまずいな",
-  "あいつ私に何てモノ食わせてんだよ",
-  "イイナァ",
-  "惚れちゃう〜",
-  "好き！",
-  "人間の死亡率は100%だから死を恐れることはないヨ！",
-  "神木君さいこう",
-  "おめぇ本格的にはらたつな！！！！",
-  "ここまで反省の色なし",
-  "あーあ\nあーあ\nうづらさんの\n悲しそうなかんじ\nあーあ\nあーあ\nアーアーアーアー\nいけよ\nお前"
-]
+GodPhoto  = require './god_photo'
+GodState  = require './god_state'
+GodSpeech = require './god_speech'
 
 module.exports = (robot) ->
   photo = new GodPhoto()
@@ -56,8 +26,10 @@ module.exports = (robot) ->
 
     msg.send theWord if theWord
 
+  speech = new GodSpeech()
   robot.hear /:chi-chan|@god-tail-1000-wave/i, (msg) ->
-    msg.send msg.random GOD_SPEECH
+    msg.send speech.random()
+
   #
   # robot.hear /I like pie/i, (msg) ->
   #   msg.emote "makes a freshly baked pie"
