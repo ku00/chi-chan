@@ -8,9 +8,9 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-GodPhoto  = require './god_photo'
-GodState  = require './god_state'
-GodSpeech = require './god_speech'
+GodPhoto  = require '../lib/god_photo'
+GodState  = require '../lib/god_state'
+GodSpeech = require '../lib/god_speech'
 
 module.exports = (robot) ->
   photo = new GodPhoto()
