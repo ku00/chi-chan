@@ -11,12 +11,19 @@
 GodPhoto  = require '../lib/god_photo'
 GodState  = require '../lib/god_state'
 GodSpeech = require '../lib/god_speech'
+TumblrLovelive = require '../lib/tumblr_lovelive'
 
 module.exports = (robot) ->
   photo = new GodPhoto()
   robot.respond /(わら|笑)って/, (msg) ->
     photo.random (res) ->
       msg.send res
+    msg.finish()
+  
+  lovelive = new TumblrLovelive()
+  robot.respond /lovelive/, (msg) ->
+    lovelive.getGif (gif) ->
+      msg.send gif
     msg.finish()
 
   state = new GodState()
