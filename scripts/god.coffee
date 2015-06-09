@@ -27,7 +27,7 @@ module.exports = (robot) ->
     msg.send theWord if theWord
 
   speech = new GodSpeech()
-  robot.hear /:chi-chan|@god-tail-1000-wave/i, (msg) ->
+  robot.respond /.*/, (msg) ->
     msg.send speech.random()
 
   #
