@@ -8,51 +8,28 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-GodState = require './god_state'
-
-GOD_SPEECH = [
-  "ファッキンクレイジーだな",
-  "アンニュイなかんじ",
-  "私はこうやって地位を確立しました",
-  "お前そういうとこあるよな",
-  "ブス！",
-  "ブスの頂点は私です",
-  "怒られたい",
-  "私これキラーイ",
-  "わかるー",
-  "でも陰で言うより良くない？",
-  "はらたつー",
-  "それなーー",
-  "ごきげんよう",
-  "ごきげんうるわしゅう",
-  "ハッピーアイスクリームゥー！ :ok_woman:",
-  "よいのでは〜",
-  "アイスたべたい :icecream:",
-  "☝️",
-  "コレクソまずいな",
-  "あいつ私に何てモノ食わせてんだよ",
-  "イイナァ",
-  "惚れちゃう〜",
-  "好き！",
-  "人間の死亡率は100%だから死を恐れることはないヨ！",
-  "神木君さいこう",
-  "おめぇ本格的にはらたつな！！！！",
-  "ここまで反省の色なし",
-  "あーあ\nあーあ\nうづらさんの\n悲しそうなかんじ\nあーあ\nあーあ\nアーアーアーアー\nいけよ\nお前"
-]
+GodPhoto  = require '../lib/god_photo'
+GodState  = require '../lib/god_state'
+GodSpeech = require '../lib/god_speech'
 
 module.exports = (robot) ->
-  state = new GodState()
+  photo = new GodPhoto()
+  robot.respond /(わら|笑)って/, (msg) ->
+    photo.random (res) ->
+      msg.send res
+    msg.finish()
 
+  state = new GodState()
   robot.hear /(.*)/i, (msg) ->
     state.update(msg.match[1])
-
     theWord = state.theWord
 
     msg.send theWord if theWord
 
-  robot.hear /:chi-chan|@god-tail-1000-wave/i, (msg) ->
-    msg.send msg.random GOD_SPEECH
+  speech = new GodSpeech()
+  robot.respond /.*/, (msg) ->
+    msg.send speech.random()
+
   #
   # robot.hear /I like pie/i, (msg) ->
   #   msg.emote "makes a freshly baked pie"
