@@ -1,4 +1,5 @@
-request = require 'request'
+request   = require 'request'
+GodRandom = require './god_random'
 
 class GodImage
   constructor: ->
@@ -12,7 +13,6 @@ class GodImage
         callback ":chi-chan: マジファックだわー"
         return
       urls = JSON.parse(body).urls
-      index = Math.floor(Math.random() * urls.length)
-      callback(urls[index])
+      callback(GodRandom.one urls)
 
 module.exports = GodImage

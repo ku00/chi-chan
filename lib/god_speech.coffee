@@ -1,3 +1,5 @@
+GodRandom = require './god_random'
+
 class GodSpeech
   SPEECHES = [
     "ファッキンクレイジーだな",
@@ -31,7 +33,6 @@ class GodSpeech
   ]
 
   random: ->
-    index = Math.floor(Math.random() * SPEECHES.length)
-    SPEECHES[index]
+    GodRandom.one(SPEECHES)
 
 module.exports = GodSpeech

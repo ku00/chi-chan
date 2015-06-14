@@ -1,4 +1,5 @@
-GodImage = require './god_image'
+GodImage  = require './god_image'
+GodRandom = require './god_random'
 
 NAMES = [
   "神木隆之介",
@@ -11,7 +12,6 @@ class GodIkemen
     @image = new GodImage()
 
   search: (callback) ->
-    index = Math.floor(Math.random() * NAMES.length)
-    @image.search(NAMES[index], callback)
+    @image.search(GodRandom.one(NAMES), callback)
 
 module.exports = GodIkemen
