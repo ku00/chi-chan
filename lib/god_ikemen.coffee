@@ -2,9 +2,10 @@ GodImage  = require './god_image'
 GodRandom = require './god_random'
 
 NAMES = [
-  "神木隆之介",
-  "佐藤健",
+  "神木隆之介"
+  "佐藤健"
   "三浦春馬"
+  "染谷将太"
 ]
 
 class GodIkemen
