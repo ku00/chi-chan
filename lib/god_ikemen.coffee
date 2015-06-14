@@ -6,6 +6,7 @@ NAMES = [
   "佐藤健"
   "三浦春馬"
   "染谷将太"
+  "窪田正孝"
 ]
 
 class GodIkemen
