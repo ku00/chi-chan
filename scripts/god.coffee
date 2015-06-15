@@ -26,6 +26,11 @@ module.exports = (robot) ->
       msg.send res
     msg.finish()
 
+  robot.respond /(:knife:|:hocho:|:fork_and_knife:)/i, (msg) ->
+    photo.ryoma (res) ->
+      msg.send res
+    msg.finish()
+
   state = new GodState()
   robot.hear /(.*)/i, (msg) ->
     state.update(msg.match[1])
