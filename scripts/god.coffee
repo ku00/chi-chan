@@ -8,11 +8,18 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
+GodIkemen = require '../lib/god_ikemen'
 GodPhoto  = require '../lib/god_photo'
 GodState  = require '../lib/god_state'
 GodSpeech = require '../lib/god_speech'
 
 module.exports = (robot) ->
+  ikemen = new GodIkemen()
+  robot.respond /イケメン/, (msg) ->
+    ikemen.search (res) ->
+      msg.send res
+    msg.finish()
+
   photo = new GodPhoto()
   robot.respond /(わら|笑)って/, (msg) ->
     photo.random (res) ->
