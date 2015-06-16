@@ -1,1 +1,1 @@
-web: bin/hubot -a slack -n god-tail-1000-wave
+web: bin/hubot -a slack -n chi-bot
