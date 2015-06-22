@@ -8,18 +8,18 @@ GodSpeech = require '../lib/god_speech'
 
 module.exports = (robot) ->
   ikemen = new GodIkemen()
-  robot.respond /イケメン/, (msg) ->
+  robot.hear /イケメン/, (msg) ->
     ikemen.search (res) ->
       msg.send res
     msg.finish()
 
   photo = new GodPhoto()
-  robot.respond /(わら|笑)って/, (msg) ->
+  robot.hear /(わら|笑)って/, (msg) ->
     photo.random (res) ->
       msg.send res
     msg.finish()
 
-  robot.respond /(:knife:|:hocho:|:fork_and_knife:)/i, (msg) ->
+  robot.hear /(:knife:|:hocho:|:fork_and_knife:)/i, (msg) ->
     photo.ryoma (res) ->
       msg.send res
     msg.finish()
@@ -28,7 +28,6 @@ module.exports = (robot) ->
   robot.hear /(.*)/i, (msg) ->
     state.update(msg.match[1])
     theWord = state.theWord
-
     msg.send theWord if theWord
 
   speech = new GodSpeech()
