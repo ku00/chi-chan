@@ -3,5 +3,5 @@
 
 module.exports = (robot) ->
   robot.hear /.*/, (msg) ->
-    if msg.envelope.room in ['please-read']
+    if msg.envelope.room in ['00please-read']
       msg.finish()
