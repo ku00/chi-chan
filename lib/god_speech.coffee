@@ -46,11 +46,6 @@ class GodSpeech
   ]
 
   random: ->
-    speech = GodRandom.one(SPEECHES)
-
-    if speech.match(/^あーあ/)
-      speech.replace("うづらさん", GodRandom.one(NAMES_5TH))
-    else
-      speech
+    GodRandom.one(SPEECHES).replace("うづらさん", GodRandom.one(NAMES_5TH))
 
 module.exports = GodSpeech
