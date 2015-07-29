@@ -1,4 +1,4 @@
-GodState = require "../scripts/god_state"
+GodState = require "../lib/god_state"
 
 describe "GodState", ->
   describe "名を唱える", ->

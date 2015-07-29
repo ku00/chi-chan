@@ -32,7 +32,20 @@ class GodSpeech
     "あーあ\nあーあ\nうづらさんの\n悲しそうなかんじ\nあーあ\nあーあ\nアーアーアーアー\nいけよ\nお前"
   ]
 
+  NAMES_5TH = [
+    "おさつ",
+    "わたし",
+    "ダディ",
+    "こじ",
+    "すずぴー",
+    "すだっち",
+    "りんちょ",
+    "あらみそ",
+    "かすみん",
+    "じょーくん"
+  ]
+
   random: ->
-    GodRandom.one(SPEECHES)
+    GodRandom.one(SPEECHES).replace("うづらさん", GodRandom.one(NAMES_5TH))
 
 module.exports = GodSpeech
